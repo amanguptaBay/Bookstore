@@ -6,6 +6,30 @@ import { Book } from "./models/bookSchema.js";
 const app = express();
 app.use(express.json())
 
+app.put("/books/:id", async (request, response) => {
+    try{
+       if(!(request.body.author && request.body.title && request.body.publishYear)){
+        response.status(400).send({
+            message: "Missing One or More Required Fields: author, title, publishYear"
+        })
+       }
+
+       const {id} = request.params
+
+       const result = await Book.findByIdAndUpdate(id, request.body)
+
+       if (result){
+        response.status(201).send({message: "Updated book"});
+       } else {
+        response.status(404).send({message: "Book not found"});
+       }
+      
+
+    } catch (error) {
+        console.log(error.message)
+        response.status(500).send({message: error.message})
+    }
+})
 
 app.post("/books", async (request, response) => {
     try{
@@ -29,6 +53,32 @@ app.post("/books", async (request, response) => {
         response.status(500).send({message: error.message})
     }
 })
+
+app.delete("/books/:id", async (request, response) => {
+    try{
+       if(!(request.body.author && request.body.title && request.body.publishYear)){
+        response.status(400).send({
+            message: "Missing One or More Required Fields: author, title, publishYear"
+        })
+       }
+
+       const {id} = request.params
+
+       const result = await Book.findByIdAndDelete(id, request.body)
+
+       if (result){
+        response.status(201).send({message: "Deleted book"});
+       } else {
+        response.status(404).send({message: "Book not found"});
+       }
+      
+
+    } catch (error) {
+        console.log(error.message)
+        response.status(500).send({message: error.message})
+    }
+})
+
 
 app.get("/books/:id", async (request, response) => {
     try{
