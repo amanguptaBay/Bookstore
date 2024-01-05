@@ -30,6 +30,28 @@ app.post("/books", async (request, response) => {
     }
 })
 
+app.get("/books/:id", async (request, response) => {
+    try{
+        const {id} = request.params
+        response.status(201).send(await Book.findById(id));
+
+    } catch (error) {
+        console.log(error.message)
+        response.status(500).send({message: error.message})
+    }
+})
+
+app.get("/books", async (request, response) => {
+    try{
+       response.status(201).send(await Book.find({}));
+      
+
+    } catch (error) {
+        console.log(error.message)
+        response.status(500).send({message: error.message})
+    }
+})
+
 app.get("/", (request, response) => {
     let statusCode = 404;
     let body = "";
