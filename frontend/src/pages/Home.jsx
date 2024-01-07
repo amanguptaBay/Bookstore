@@ -15,8 +15,6 @@ export const Home = () => {
     axios
     .get('http://localhost:5555/books')
     .then((response) => {
-      console.log("Got books from server as")
-      console.log(response.data.length)
       setBooks(response.data)
       setLoading(false)
     })
@@ -25,9 +23,6 @@ export const Home = () => {
     })
 
   }, [])
-
-  if (books.length >= 2)
-    console.log(`Books: ${books[0].title} ,${books[1].title}`)
   
   return (
     <div className='p-4'>
