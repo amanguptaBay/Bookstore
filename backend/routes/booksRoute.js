@@ -53,14 +53,8 @@ router.post("/", async (request, response) => {
 
 router.delete("/:id", async (request, response) => {
     try{
-       if(!(request.body.author && request.body.title && request.body.publishYear)){
-        response.status(400).send({
-            message: "Missing One or More Required Fields: author, title, publishYear"
-        })
-       }
-
        const {id} = request.params
-
+    
        const result = await Book.findByIdAndDelete(id, request.body)
 
        if (result){
