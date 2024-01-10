@@ -52,12 +52,12 @@ export const EditBook = () => {
   return (
     <div className='p-4'>
       <BackButton />
-      <h1 className='text-3x1 my-4'>Edit Book</h1>
+      <h1 className='text-3xl my-4'>Edit Book</h1>
       {loading ? <Spinner/> : 
-        <div className='flex flex-col border-2 border-sky-400 rounded-x1 w-[600px] p-4 mx-auto'>
+        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
           
         <div className='my-4'>
-          <label className='text-x1 mr-4 text-gray-500'>Book Title</label>
+          <label className='text-xl mr-4 text-gray-500'>Book Title</label>
           <input
           className='border-2 border-gray-500 px-4 py-2 w-full'
           type='text' value = {title}
@@ -66,7 +66,7 @@ export const EditBook = () => {
           </div>
 
           <div className='my-4'>
-          <label className='text-x1 mr-4 text-gray-500'>Book Author</label>
+          <label className='text-xl mr-4 text-gray-500'>Book Author</label>
           <input
           className='border-2 border-gray-500 px-4 py-2 w-full'
           type='text' value = {author}
@@ -75,7 +75,7 @@ export const EditBook = () => {
           </div>
 
           <div className='my-4'>
-          <label className='text-x1 mr-4 text-gray-500'>Book Publish Year</label>
+          <label className='text-xl mr-4 text-gray-500'>Book Publish Year</label>
           <input
           className='border-2 border-gray-500 px-4 py-2 w-full'
           type='number' value = {publishYear}
